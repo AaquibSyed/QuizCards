@@ -1,38 +1,99 @@
-.App {
+body {
+  background-color: rgb(212, 209, 209);
+}
+.card-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.container {
+  max-width: 1900px;
+  margin: 1rem 1rem;
+}
+
+.card {
+  margin-left: 5px;
+  margin-bottom: 2px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+  transform-style: preserve-3d;
+  transition: 400ms;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 0 8px 2px rgba(19, 3, 3, 0.5);
+  --translate-y: -2px;
+}
+
+.flip {
+  --rotate-y: 180deg;
+  background-color: rgb(114, 219, 140);
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  width: 100%;
+  backface-visibility: hidden;
+}
+.card .back {
+  transform: rotateY(180deg);
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.card .front {
+  left: 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.flashcard-options {
+  margin-top: 0.5rem;
+}
+.flashcard-option {
+  margin-top: 0.25rem;
+  color: #555;
+  font-size: 0.25rem;
+}
+.flashcard-option:first-child {
+  margin-top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  background-color: white;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.4);
+  padding: 0 1.5rem;
+}
+
+.btn {
+  background-color: rgba(30, 135, 187, 0.8);
+  color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: rgb(24, 77, 104);
+}
+
+.form-group {
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-group > label {
+  color: #777;
+  font-size: 0.75px;
+  margin-bottom: 0.25rem;
 }
